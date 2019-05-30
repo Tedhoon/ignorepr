@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Ted's blog</title>
+</head>
+<body>
+  {%extends 'base.html'%}  
+  {%block contents%}
+
+            
+              <div class="container">
+    <!--{% for blogs in blog_all %}
+    
+        
+        <h1>{{blogs.title}}</h1>
+        <p>{{blogs.pub_date}}</p>
+        <p>{{blogs.summary}}</p>
+        <a href = "{% url 'detail' blogs.id%}" >details</a>
+
+    
+    {% endfor %}-->
+    {% if user.is_authenticated %}
+
+    안녕하세요! {{user.username}}님! <br>
+    마지막 접속일 {{user.last_login}}입니다.
+
+    <a href="{%url 'logout'%}">로그아웃</a>
+
+    {%else%}
+
+    <a href="{%url 'signup'%}">회원가입</a>
+    <a href="{%url 'login'%}">로그인</a>
+    
+    {%endif%}
+
+   
+    {% for blogs in blog_all %}
+     <div class="card" style="width: 70rem;">
+         <div class="card-body">
+            <h1>{{blogs.title}}</h1>
+            <h5 class="card-title"></h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{blogs.pub_date}}</h6>
+            <p class="card-text">{{blogs.summary}}</p>
+            <a href="#" class="card-link"><a href = "{% url 'detail' blogs.id%}" >details</a><br>
+            <a href="{%url 'update' blogs.id%}">수정하기</a>
+            <a href="{%url 'delete' blogs.id%}">삭제하기</a>
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+
+    {%endblock%}
+
+
+</div>    
+</body>
+</html>
+

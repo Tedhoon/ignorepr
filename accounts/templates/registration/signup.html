@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body> <!--장고내의 회원가입 폼을 쓰지만 , 우리가 입력값을 보내주는 것은 처리해줘야한다.-->
+    
+
+    <form method = "POST">
+        {{signup_form}}
+        {%csrf_token%}
+    
+    <input type = "submit" value = "회원가입">
+    </form>
+
+    
+</body>
+</html>
