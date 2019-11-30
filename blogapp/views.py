@@ -6,15 +6,14 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     blog = Blog.objects.all
-    context = {'blog_all' : blog}
 
-    return render(request,'home.html', context)
+    return render(request,'home.html', {'blog_all' : blog})
 
 def detail(request,blog_id):
     details = get_object_or_404(Blog, pk = blog_id) 
                                       #primary key    
 
-    return render(request,'detail.html',{'details': details})
+    return render(request, 'detail.html', {'details':details})
 
 @login_required
 def edit(request):
@@ -25,7 +24,7 @@ def edit(request):
             forms.save()
             return redirect('home')
 
-    forms = BlogForms()
+    forms = BlogForms() 
     return render(request,'edit.html',{'forms': forms})
         
 @login_required  

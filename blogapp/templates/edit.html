@@ -12,7 +12,7 @@
     {%extends 'base.html'%}
 
     {%block contents%}
-    <form method="POST">
+    <form method="POST" action="{url 'edit' blogs.id}">
         <input type = "submit"  value = "글쓰기">
         {{forms.as_p}}
         {%csrf_token%}
